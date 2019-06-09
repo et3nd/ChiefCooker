@@ -4,19 +4,17 @@ import makesalad.Salad;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public abstract class Vegetable {
 
-    ResourceBundle res = ResourceBundle.getBundle("vegetables.vegetable");
     // Разновидность
-    String kindOf;
+    private final String kindOf;
     // Вес добавляемого овоща в граммах
-    int weight;
+    private final int weight;
     // Калорийность овоща, ккал
-    int calorie;
+    private final int calorie;
     // Сумма овощей в салате
-    static int calorieCounting;
+    private static int calorieCounting;
 
     private static List<Vegetable> vegetableSalad = Salad.makeSalad(new ArrayList<>());
 
@@ -39,7 +37,13 @@ public abstract class Vegetable {
     }
 
     // Конструктор базового класса
-    Vegetable() {
+
+
+    Vegetable(final String kindOf, final int weight, final int calorie) {
+        this.kindOf = kindOf;
+        this.weight = weight;
+        this.calorie = calorie;
+        calorieCounting += calorie;
     }
 
     public static void realize() {

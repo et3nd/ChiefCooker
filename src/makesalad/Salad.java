@@ -7,15 +7,24 @@ import vegetables.Vegetable;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class Salad {
+
+    private static ResourceBundle res = ResourceBundle.getBundle("vegetables.vegetable");
 
     // Создаём массив овощей
     public static List<Vegetable> makeSalad(List<Vegetable> vegetableList) {
         System.out.println("Салат состоит из: ");
-        vegetableList.add(new Tomato());
-        vegetableList.add(new Bellpepper());
-        vegetableList.add(new Cucumber());
+        vegetableList.add(new Tomato(res.getString("tomato"),
+                Integer.parseInt(res.getString("tomatoWeight")),
+                Integer.parseInt(res.getString("tomatoCalories"))));
+        vegetableList.add(new Bellpepper(res.getString("bellpepper"),
+                Integer.parseInt(res.getString("bellpepperWeight")),
+                Integer.parseInt(res.getString("bellpepperCalories"))));
+        vegetableList.add(new Cucumber(res.getString("cucumber"),
+                Integer.parseInt(res.getString("cucumberWeight")),
+                Integer.parseInt(res.getString("cucumberCalories"))));
         printSalad(vegetableList);
         return vegetableList;
     }
